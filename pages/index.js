@@ -2,6 +2,7 @@ import { gql, GraphQLClient } from "graphql-request";
 import Section from "@edgard/components/Section";
 import NavBar from "@edgard/components/NavBar";
 import Link from "next/link";
+import { useRef } from "react";
 
 export const getStaticProps = async () => {
   const url = process.env.ENDPOINT;
@@ -62,6 +63,33 @@ const Home = ({ videos, account }) => {
   // console.log(videos);
   // console.log(account);
 
+  const drama = useRef()
+  const epic = useRef()
+  const thriller = useRef()
+  const classic = useRef()
+  const comedy = useRef()
+
+  const drama1 = drama.current?.offsetTop
+  const epic1 = epic.current?.offsetTop
+  const thriller1 = thriller.current?.offsetTop
+  const classic1 = classic.current?.offsetTop
+  const comedy1 = comedy.current?.offsetTop
+
+  const handleScroll = (ref) => {
+    if(ref === drama){
+      window.scrollTo(0, drama1)
+    } else if( ref === epic){
+      window.scrollTo(0,epic1)
+    } else if (ref === thriller){
+      window.scrollTo(0,thriller1)
+    } else if (ref === classic){
+      window.scrollTo(0,classic1)
+    } else if (ref === comedy){
+      window.scrollTo(0,comedy1)
+    }
+  }
+
+
   const randomVideo = (videos) => {
     return videos[Math.floor(Math.random() * videos.length)];
   };
@@ -88,20 +116,20 @@ const Home = ({ videos, account }) => {
         </div>
 
         <div className="video-feed">
-          <Link href="#drama"><div className="franchise" id="drama"></div></Link>
-          <Link href="#epic"><div className="franchise" id="epic"></div></Link>
-          <Link href="#thriller"><div className="franchise" id="thriller"></div></Link>
-          <Link href="#classic"><div className="franchise" id="classic"></div></Link>
-          <Link href="#unknown"><div className="franchise" id="unknown"></div></Link>
+          <div onClick={() => handleScroll(drama)} className="franchise">🎭</div>
+          <div onClick={() => handleScroll(epic)} className="franchise">⚔️</div>
+          <div onClick={() => handleScroll(thriller)} className="franchise">🙀</div>
+          <div onClick={() => handleScroll(classic)} className="franchise">🏛️</div>
+          <div onClick={() => handleScroll(comedy)} className="franchise">🤣</div>
         </div>
         
           <Section genre={"Recomended for you"} videos={unSeenVideos(videos)}/>
-          <Section id="drama" genre={"Drama"} videos={filterVideos(videos, "Drama")}/>
-          <Section id="epic" genre={"Epic"} videos={filterVideos(videos, "Epic")}/>
-          <Section id="thriller" genre={"Thriller"} videos={filterVideos(videos, "Thriller")} />
-          <Section id="classic" genre={"Classic"} videos={filterVideos(videos, "Classic")} />
-          <Section id="unknown" genre={"Unknown"} videos={filterVideos(videos, "Unknown")} />
-          <Section genre={"Unknown"} videos={filterVideos(videos, "Unknown")} />
+          <Section refe={drama} id="drama" genre={"Drama"} videos={filterVideos(videos, "Drama")}/>
+          <Section refe={epic} id="epic" genre={"Epic"} videos={filterVideos(videos, "Epic")}/>
+          <Section refe={thriller} id="thriller" genre={"Thriller"} videos={filterVideos(videos, "Thriller")} />
+          <Section refe={classic} id="classic" genre={"Classic"} videos={filterVideos(videos, "Classic")} />
+          <Section refe={comedy} id="comedy" genre={"Comedy"} videos={filterVideos(videos, "Comedy")} />
+          <Section genre={"Animation"} videos={filterVideos(videos, "Animation")} />
         
       </div>
     </>

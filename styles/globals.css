@@ -1,12 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap');
+
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Sono', sans-serif;
 }
 
 html,
 body {
-  background: #13151f;
-  color: #fff;
+  background: var(--wt);
+  color: black;
+}
+
+:root {
+  --wt: #fcfcfc;
+  --blue: #0fc9e7;
+  --ltblue: #3186b2;
+  --purp: #4756ca;
+
+}
+
+a {
+  text-decoration: none;
 }
 
 .navbar {
@@ -15,14 +30,19 @@ body {
   display: flex;
   justify-content: space-between;
   padding-top: 30px;
+  background-color: var(--purp);
+  position: fixed;
+  z-index: 1;
+  top: 0;
 }
 
 .main-video {
-  width: 100vw;
-  height: 30vh;
+  width: 100%;
+  height: 80%;
   overflow: hidden;
   position: relative;
-  margin-bottom: 50px;
+  margin-block-end: 10px;
+  margin-block-start: 100px;
 }
 
 .main-video img {
@@ -30,11 +50,28 @@ body {
 }
 
 .card {
-  width: 19.2%;
-  height: auto;
+  width: 300px;
+  height: 300px;
   border-radius: 5%;
   margin: 0.4%;
-  filter: drop-shadow(5px 5px 10px #000);
+  filter: drop-shadow(0px 0px 10px var(--purp)) blur(0.5px);
+
+  transition: all ease-in-out 250ms;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 10px black) blur(0);
+}
+
+.section {
+  margin-block-end: 100px;
+}
+
+.section > h3 {
+  font-size: 40px;
+  margin-inline-start: 60px;
+  margin-block-end: 20px;
 }
 
 .video-image {
@@ -60,8 +97,9 @@ body {
 
 .account-info {
   display: flex;
+  align-items: center;
   height: 50%;
-  margin: 20px;
+  margin: 10px;
 }
 
 .avatar { 
@@ -73,12 +111,21 @@ body {
 
 .franchise {
   width: 150px;
-  height: 100px;
-  background-color: blue;
+  height: 45px;
+  background-color: var(--ltblue);
   margin: 5px;
   border-radius: 10px;
+  font-size: 30px;
+  text-align: center;
+  box-shadow: 0 0 10px var(--ltblue);
+
+  transition: all ease-in 250ms;
 }
 
+ .franchise:hover {
+  box-shadow: 0 0 20px black;
+  transform: translateY(-3px);
+ }
 
 .video-feed {
   display: grid;
@@ -89,5 +136,20 @@ body {
 }
 
 .logo-wrapper {
-  padding: 10px 30px;
+  padding: 0px 10px;
+  margin-block-start: -26px;
 }
+
+.logo {
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0 0 5px black;
+}
+
+.thumbnail-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 10px;
+}
+
