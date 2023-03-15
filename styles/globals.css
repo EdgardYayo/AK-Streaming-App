@@ -22,6 +22,7 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .navbar {
@@ -85,10 +86,32 @@ a {
   margin-top: 30%;
   margin-left: 50px;
   max-width: 50%;
+  background: #3187b2b1;
+  border: var(--wt) 3px solid;
+  border-radius: 10px;
+  padding: 20px;
 }
+
 
 .video-overlay {
   position: absolute;
+  background: var(--purp);
+  border: var(--wt) 2px solid;
+  border-radius: 5px;
+  color: var(--wt);
+  padding: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  margin-block-start: 10px;
+  cursor: pointer;
+  
+  transition: all ease 250ms;
+}
+
+.video-overlay:hover {
+  transform: translateX(5px);
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 1px 1px 10px black;
 }
 
 .info-footer {
@@ -153,3 +176,25 @@ a {
   gap: 10px;
 }
 
+.genres {
+  font-style: italic;
+  margin-block-end: 10px;
+  text-shadow: 0 0 1px black;
+}
+
+.back > p {
+  margin-block-start: 10px;
+  text-transform: capitalize;
+  font-size: 1.2em;
+  filter: blur(0.5px);
+  
+  transition: all ease 250ms;
+}
+
+.back:hover > p {
+  filter: blur(0) contrast(120%);
+}
+
+.back:hover > p::before {
+  content: "←";
+}

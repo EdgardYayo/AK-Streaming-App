@@ -64,16 +64,16 @@ const Video = ({ video }) => {
             { !watching && <img className="video-image" src={video.thumbnail.url}
             alt={video.title}/> }
             { !watching && <div className="info">
-                <p>{video.tags.join(", ")}</p>
+                <p className="genres">{video.tags.join(", ")}</p>
                 <p>{video.description}</p>
-                <a href="/"><p>go back</p></a>
+                <a className="back" href="/"><p>go back</p></a>
                 <button
                     className="video-overlay"
                     onClick={() => {
                         changeToSeen(video.slug)
                         watching ? setWatching(false) : setWatching(true); 
                     }}
-                >Play</button> 
+                >Play ▶️</button> 
             </div> }
             { watching && (
                 <video width="100%" controls>
